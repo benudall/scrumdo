@@ -14,20 +14,33 @@
 </head>
 <html>
 	<h1>
-		Test report generated at: {{date}}<br>
-		Tickets in the done column that have been updated between {{start}} and {{end}}
+		Scrumdo snapshot generated at: {{date}}<br>
 	</h1>
-	<table cellspacing=0 cellpadding=0>
-		{{#each items}}
+	<table cellspacing=0 cellpadding=0 border>
+		{{#each iterations}}
 		<tr>
+			<th rowspan=2>
+				{{name}}
+			</th>
+			{{#each boardcells}}
+			<th>
+				{{name}}
+			</th>
+			{{/each}}
+		</tr>
+		<tr>
+			{{#each boardcells}}
 			<td>
+				{{#each stories}}
 				<details>
 					<summary>
 						{{number}} {{{summary}}}
 					</summary>
 					{{{detail}}}
 				</details>
+				{{/each}}
 			</td>
+			{{/each}}
 		</tr>
 		{{/each}}
 	</table>
